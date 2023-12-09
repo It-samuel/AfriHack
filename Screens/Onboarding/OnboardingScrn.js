@@ -20,7 +20,7 @@ export default function OnboardingScrn() {
         } else {
           // If on the second-to-last screen, go to the last screen with a different button
           if (swiperRef.current && swiperRef.current.state.index === screens.length - 2) {
-            swiperRef.current.scrollBy(1, false);}
+            swiperRef.current.scrollBy(1, true);}
          else {
             // If on the last screen, navigate to the login screen
             navigation.navigate('Login');
@@ -48,24 +48,18 @@ export default function OnboardingScrn() {
 
   return (
     <View style={{ flex: 1 }}>
-    <Swiper ref={swiperRef} loop={false}>
-      {screens}
-    </Swiper>
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 16 }}>
-      {swiperRef.current && swiperRef.current.state.index < 3 ? (
-        <>
-          <TouchableOpacity style={styles.skipBtn} onPress={handleSkip}>
-            <Text style={{ fontSize: 20, fontWeight: '500', color: 'white' }}>Skip</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.nextBtn} onPress={handleNext}>
-            <Text style={{ fontSize: 20, fontWeight: '500', color: 'white' }}>Next </Text>
-          </TouchableOpacity>
-        </>
-      ) : 
-      ('')
-      }
-    </View>
+  <Swiper ref={swiperRef} loop={false}>
+    {screens}
+  </Swiper>
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 16 }}>
+    <TouchableOpacity style={styles.skipBtn} onPress={handleSkip}>
+      <Text style={{ fontSize: 20, fontWeight: '500', color: 'white' }}>Skip</Text>
+    </TouchableOpacity>
+    <TouchableOpacity style={styles.nextBtn} onPress={handleNext}>
+      <Text style={{ fontSize: 20, fontWeight: '500', color: 'white' }}>Next </Text>
+    </TouchableOpacity>
   </View>
+</View>
   )
 }
 
@@ -90,13 +84,6 @@ const styles = StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
     },
-    getStartedBtn:{
-        backgroundColor:colors.primColor,
-        width:225,
-        height:45,
-        borderRadius:10,
-        alignItems:'center',
-        justifyContent:'center',
-    }
+    
     
 })

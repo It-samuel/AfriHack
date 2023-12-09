@@ -3,6 +3,7 @@ import { createNativeStackNavigator,} from "@react-navigation/native-stack";
 import SplashScrn from "../Screens/SplashScrn";
 import Login from "../Screens/Login";
 import OnboardingScrn from "../Screens/Onboarding/OnboardingScrn";
+import SignUp from "../Screens/SignUp";
 
 const Auth = createNativeStackNavigator();
 export default function Authen(){
@@ -22,6 +23,11 @@ export default function Authen(){
             <Auth.Screen 
             name ="Login"
             component={Login}
+            options={{headerShown: false}}
+            />
+            <Auth.Screen 
+            name ="SignUp"
+            component={SignUp}
             options={{headerShown: false}}
             />
             
