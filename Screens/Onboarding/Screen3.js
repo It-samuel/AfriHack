@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, SafeAreaView,StatusBar,
   Image,
+
   } from 'react-native'
   import React from 'react'
   
@@ -19,6 +20,7 @@ import { StyleSheet, Text, View, SafeAreaView,StatusBar,
           <View style={styles.text2}>
             <Text style={{textAlign:'center', fontSize:15,fontWeight:'400'}}>Set a target and collectively pay for your children’s school fees. Structure payments to suit you circle’s goals.</Text>
           </View>
+          
           </View>
       </SafeAreaView>
     )
@@ -26,7 +28,7 @@ import { StyleSheet, Text, View, SafeAreaView,StatusBar,
   
   const styles = StyleSheet.create({
       container:{
-          flex:1,
+          
           marginTop:StatusBar.currentHeight,
       },
       text1:{alignSelf:'center',

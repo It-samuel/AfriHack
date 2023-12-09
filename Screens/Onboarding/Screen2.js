@@ -26,7 +26,7 @@ import { StyleSheet, Text, View, SafeAreaView,StatusBar,
   
   const styles = StyleSheet.create({
       container:{
-          flex:1,
+          
           marginTop:StatusBar.currentHeight,
       },
       text1:{alignSelf:'center',

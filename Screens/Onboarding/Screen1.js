@@ -3,7 +3,7 @@ Image,
 } from 'react-native'
 import React from 'react'
 
-export default function Screen1() {
+export default function Screen1({text}) {
   return (
     <SafeAreaView style={styles.container}>
         <View >
@@ -27,15 +27,20 @@ export default function Screen1() {
 
 const styles = StyleSheet.create({
     container:{
-        flex:1,
+        
         marginTop:StatusBar.currentHeight,
     },
     text1:{alignSelf:'center',
     justifyContent:'center',
+    overflow:'visible',
+    
+    
   },
     text2:{
       marginHorizontal:15,
       alignItems:'center',
-      marginTop:35
+      marginTop:35,
+      overflow:'visible',
+      
     }
 })

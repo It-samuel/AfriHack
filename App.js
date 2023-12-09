@@ -3,13 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import Screen1 from './Screens/Onboarding/Screen1';
 import Screen2 from './Screens/Onboarding/Screen2';
 import Screen3 from './Screens/Onboarding/Screen3';
+import OnboardingScrn from './Screens/Onboarding/OnboardingScrn';
+import RootNav from './Navigations/RootNav';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      < Screen3 />
+      < RootNav />
       
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
     </View>
   );
 }
