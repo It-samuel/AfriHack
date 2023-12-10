@@ -44,7 +44,7 @@ export default function HomeScreen({navigation}) {
 
           </View>
           <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
-          <TouchableOpacity style={styles.deposits}>
+          <TouchableOpacity style={styles.deposits}  onPress={() => navigation.navigate('Deposits')}>
             <Text style={{color:'white'}}>Deposit</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.withdraw}>
@@ -52,7 +52,7 @@ export default function HomeScreen({navigation}) {
           </TouchableOpacity>
           </View>
           <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
-            <TouchableOpacity style={styles.transactions} onPress={() => navigation.navigate('CreateCircle')}> 
+            <TouchableOpacity style={styles.transactions} onPress={() => navigation.navigate('Create a Circle')}> 
             <Image 
               source={require('../Screens/Images/add.png')}  
               style = {{ height: 25, width: 25, resizeMode: 'cover' , marginTop:10 }}

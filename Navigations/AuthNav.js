@@ -6,6 +6,7 @@ import OnboardingScrn from "../Screens/Onboarding/OnboardingScrn";
 import SignUp from "../Screens/SignUp";
 import BottomTabs from "./BottomTabs";
 import CreateCircle from "../Screens/CreateCircle";
+import Deposits from "../Screens/Deposits";
 
 const Auth = createNativeStackNavigator();
 export default function Authen(){
@@ -38,9 +39,15 @@ export default function Authen(){
             options={{headerShown: false}}
             />
             <Auth.Screen 
-            name ="CreateCircle"
+            name ="Create a Circle"
             component={CreateCircle}
-            options={{headerShown: false}}
+            options={{headerShown: true}}
+            />
+
+            <Auth.Screen 
+            name ="Deposits"
+            component={Deposits}
+            options={{headerShown: true}}
             />
             
             
