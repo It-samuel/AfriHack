@@ -3,5 +3,7 @@
 
 export const colors = {
     primColor: "#c670ff",
-    white: "#fff"
+    white: "#fff",
+    milk: "#fff9da",
+    lightPurple:"#f4e2ff"
 }
