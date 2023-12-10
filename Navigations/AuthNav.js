@@ -4,6 +4,7 @@ import SplashScrn from "../Screens/SplashScrn";
 import Login from "../Screens/Login";
 import OnboardingScrn from "../Screens/Onboarding/OnboardingScrn";
 import SignUp from "../Screens/SignUp";
+import BottomTabs from "./BottomTabs";
 
 const Auth = createNativeStackNavigator();
 export default function Authen(){
@@ -28,6 +29,11 @@ export default function Authen(){
             <Auth.Screen 
             name ="SignUp"
             component={SignUp}
+            options={{headerShown: false}}
+            />
+            <Auth.Screen 
+            name ="BottomTabs"
+            component={BottomTabs}
             options={{headerShown: false}}
             />
             

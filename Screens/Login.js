@@ -37,7 +37,7 @@ export default function Login({navigation}) {
         />
         <TouchableOpacity><Text style={{alignSelf:'flex-end', marginRight:30}}>Forgot Password?</Text></TouchableOpacity>
 
-        <TouchableOpacity style={styles.getStartedBtn} >
+        <TouchableOpacity style={styles.getStartedBtn} onPress={() => navigation.navigate('BottomTabs')}>
                 <Text style={{ fontSize: 20, fontWeight: '500', color: 'white' }}>Sign in</Text>
         </TouchableOpacity>
 
