@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const userRoute = require('./user');
+const passwordRoute = require('./password');
 
 const router = Router();
 
@@ -11,6 +12,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/user', userRoute);
+router.use('/password', passwordRoute);
 
 router.get('*' || '/*/*', (req, res) => {
     // Send a 404 Not Found response
