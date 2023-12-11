@@ -4,7 +4,7 @@
   "description": "CircleUp is vital for empowering women through collaborative financial participation and tailored solutions, contributing to gender equality 🙎‍♀️💳",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "Allahisrabb",
@@ -26,6 +26,8 @@
     "helmet": "^7.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "node-cache": "^5.1.2",
+    "twilio": "^4.19.3"
   }
 }

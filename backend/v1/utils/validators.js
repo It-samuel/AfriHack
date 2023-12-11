@@ -39,16 +39,67 @@ const loginValidator = [
   body("password").trim().isLength({ min: 6 }).withMessage("Password should contain at least 6 characters!"),
 ];
 
+const phoneNumberValidator = (value) => {
+  if (!value.startsWith('+')) {
+    throw new Error('Phone number must start with a + and include country code');
+  }
+
+  // Validating phone number length
+  if (value.length < 10 || value.length > 15) {
+    throw new Error('Invalid phone number length');
+  }
+
+  return true;
+};
+
+const bvnValidator = (value) => {
+  if (value.length !== 11) {
+    throw new Error('Invalid bvn');
+  }
+
+  return true;
+}
+
 const signupValidator = [
-  body("name").notEmpty().withMessage("Name is required"),
-  body("firstName"),
-  body("lastName"),
-  body("phoneNumber"),
+  body('country').trim(),
+  body('bvn').trim().custom(bvnValidator),
+  body('securityPin').trim(),
+  body('name').notEmpty().withMessage('Name is required'),
+  body('firstName').trim(),
+  body('lastName').trim(),
+  body('phoneNumber')
+    .trim()
+    .custom(phoneNumberValidator), // Use custom validation for phoneNumber
   ...loginValidator,
 ];
+
+const forgotPasswordValidator = [
+  body('phoneNumber')
+    .trim()
+    .notEmpty()
+    .withMessage("Phone number can't be empty")
+    .custom(phoneNumberValidator)
+];
+
+const verifyOTPvalidator = [
+  body('otp')
+  .trim()
+  .notEmpty()
+  .withMessage("otp can't be empty"),
+  ...forgotPasswordValidator,
+]
+
+const resetPasswordValidator = [
+  body("password").trim().notEmpty().withMessage("Password can't be empty!").isLength({ min: 6 }).withMessage("Password should contain at least 6 characters!"),
+  ...forgotPasswordValidator,
+]
+
 
 module.exports = {
   loginValidator,
   signupValidator,
+  forgotPasswordValidator,
+  verifyOTPvalidator,
+  resetPasswordValidator,
   validate,
 };

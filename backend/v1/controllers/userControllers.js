@@ -9,7 +9,12 @@ exports.getAllUsers = async (req, res, next) => {
 
     return res.status(200).json({ success: true, data: users });
   } catch (error) {
-    next(error);
+    // Handle errors
+    console.error("Error getting all users:", error);
+    res.status(500).json({
+      success: false,
+      data: "Error getting all users. Please try again. 🙂",
+    });
   }
 };
 
@@ -17,7 +22,7 @@ exports.createUser = async (req, res, next) => {
   try {
     const email = req.body.email;
 
-    // Check if user already exists
+    // Check if user already exists by email
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res
@@ -25,10 +30,22 @@ exports.createUser = async (req, res, next) => {
         .json({ success: false, data: "User already registered! 🙂" });
     }
 
+    // check if user already exists by phoneNumber
+    if (req.body.phoneNumber) {
+      const existingUser = await User.findOne({
+        phoneNumber: req.body.phoneNumber,
+      });
+      if (existingUser) {
+        return res
+          .status(401)
+          .json({ success: false, data: "User already registered! 🙂" });
+      }
+    }
+
     // Hash the password
     const hashedPassword = await hash(req.body.password, 10);
 
-    const { password, ...others } = req.body;
+    const { password, country, bvn, securityPin, ...others } = req.body;
 
     // Create subaccount using SDK
     const subaccountData = await createSubaccount(others);
@@ -37,6 +54,10 @@ exports.createUser = async (req, res, next) => {
     const user = new User({
       email: req.body.email,
       password: hashedPassword,
+      country: country ? country : "Nigerian",
+      bvn: bvn ? bvn : null,
+      securityPin: securityPin ? securityPin : null,
+      phoneNumber: req.body.phoneNumber ? req.body.phoneNumber : null,
       data: subaccountData.data,
     });
 
@@ -77,7 +98,12 @@ exports.login = async (req, res, next) => {
     // Set cookie and send response
     handleCookieAndResponse(res, user);
   } catch (error) {
-    next(error);
+    // Handle errors
+    console.error("Error logging in:", error);
+    res.status(500).json({
+      success: false,
+      data: "Error logging in. Please try again. 🙂",
+    });
   }
 };
 
@@ -108,6 +134,11 @@ exports.logout = async (req, res, next) => {
       .status(200)
       .json({ success: true, message: "user successfully logged out! 🙂" });
   } catch {
-    next(error);
+    // Handle errors
+    console.error("Error logging out:", error);
+    res.status(500).json({
+      success: false,
+      data: "Error logging out. Please try again. 🙂",
+    });
   }
 };
